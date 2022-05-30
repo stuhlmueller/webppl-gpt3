@@ -200,6 +200,7 @@ function makeDistributionType(options) {
     if (extraConstructorFn !== undefined) {
       extraConstructorFn.call(this);
     }
+    this.handlesContinuation = options.handlesContinuation;
   };
 
   dist.prototype = Object.create(Distribution.prototype);

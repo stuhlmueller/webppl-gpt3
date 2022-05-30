@@ -43,10 +43,17 @@ module.exports = function(env) {
 
     sample: function(s, k, a, dist, options) {
       var cont = function(s, dist) {
-        var val = dist.sample();
-        this.score += dist.score(val);
-        return k(s, val);
-      }.bind(this);
+        var k2 = function(s, val) {
+          var val = dist.sample();
+          this.score += dist.score(val);
+          return k(s, val);
+        }
+        if (dist.handlesContinuation) {
+          return dist.sample(k2, s)
+        } else {
+          return k2(s, dist.sample())
+        }
+      };
 
       if (this.sampleGuide) {
         options = options || {};

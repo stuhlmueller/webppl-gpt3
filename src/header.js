@@ -59,6 +59,9 @@ module.exports = function(env) {
 
   env.defaultCoroutine = {
     sample: function(s, k, a, dist) {
+      if (dist.handlesContinuation) {
+        return dist.sample(s, k)
+      }
       return k(s, dist.sample());
     },
     factor: function() {

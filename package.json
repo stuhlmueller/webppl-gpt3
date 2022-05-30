@@ -44,8 +44,8 @@
     "grunt-eslint": "^19.0.0",
     "nodeunit": "^0.11.3",
     "open": "0.0.5",
-    "qunit-phantomjs-runner": "^2.1.0",
     "qunit": "^2.4.1",
+    "qunit-phantomjs-runner": "^2.1.0",
     "through2": "^2.0.0"
   },
   "scripts": {
