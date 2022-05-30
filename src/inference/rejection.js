@@ -79,6 +79,9 @@ module.exports = function(env) {
   }
 
   Rejection.prototype.sample = function(s, k, a, dist) {
+    if (dist.handlesContinuation) {
+      return dist.sample(k, s);
+    } 
     return k(s, dist.sample());
   };
 
